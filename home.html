@@ -35,15 +35,9 @@ function jsonFlickrApi(rsp){
 
 		var img = document.createElement("img");
 		img.id = "photo" + i;
-		img.class = "primaryImage";
+		img.className = "primaryImage";
 		img.src = newUrl;
 		img.alt = photoTitle;
-
-		// var infoDiv = document.createElement("div");
-		// infoDiv.id = "photoHover";
-		// infoDiv.class = "infoDiv";
-		// infoDiv.innerHTML = photoTitle;
-	
 
 		var list = document.getElementById('picture_list');
 		var entry = document.createElement('li');
@@ -53,9 +47,20 @@ function jsonFlickrApi(rsp){
 		list.appendChild(entry);
 	}
 
-	//funnction to display the lightbox view of specific image
+	//function to display the lightbox view of specific image
+	function displayLightbox (){
+		console.log("clicked!");
+	}
+
 
 	//event listener on all images for said function
+	var allPrimaryImages = document.getElementsByClassName("primaryImage");
+	//console.log(allPrimaryImages)
+
+	for (var i = 0; i < allPrimaryImages.length; i++){
+		//console.log(allPrimaryImages[i]);
+		allPrimaryImages[i].addEventListener("click", function(){displayLightbox()}, false);
+	}
 }
 </script>
 
