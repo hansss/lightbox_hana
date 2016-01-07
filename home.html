@@ -2,13 +2,18 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>Pictogrid</title>
+	<title>Pic O' Pancake</title>
 </head>
 <body>
-	<h1>My Pictures</h1>
+	<h1>Pic O' Pancake</h1>
 	<div id = "picture_grid">
+		<ul id="picture_list">
+
+		</ul>
 	</div>
 
+	<div id="spotlight" class="spotlight_content"></div>
+	<div id="back" class="shadow"></div>
 
 <script type="text/javascript">
 function jsonFlickrApi(rsp){
@@ -23,15 +28,26 @@ function jsonFlickrApi(rsp){
 		var photoFarmId = singlePhoto.farm;
 		var photoServerId = singlePhoto.server;
 		var photoSecret = singlePhoto.secret;
-	
+		var photoTitle = singlePhoto.title;
 
 		var newUrl = "https://farm" + photoFarmId + ".staticflickr.com/" + photoServerId + "/" + photoId + "_" + photoSecret + ".jpg";
+
 		var img = document.createElement("img");
-		//img.style.width = "0.02 em"
-
-		document.getElementById('picture_grid').appendChild(img);
 		img.src = newUrl;
+		img.alt = photoTitle;
 
+		var list = document.getElementById('picture_list')
+		var entry = document.createElement('li');
+		
+		//var a = document.createElement('a');
+		//a.href = newUrl;
+		//a.alt = photoTitle;
+		//entry.appendChild(a);
+
+		entry.appendChild(img)
+
+		list.appendChild(entry);
+		//console.log(a.alt);
 	}
 }
 </script>
