@@ -1,0 +1,28 @@
+html{
+	margin-right: 1em;
+	margin-left: 1em;
+}
+
+h1 {
+	text-align: center;
+}
+
+#picture_grid {
+	line-height: 0;
+
+	-webkit-column-count: 5;
+	-webkit-column-gap:   0px;
+	-moz-column-count:    5;
+	-moz-column-gap:      0px;
+	column-count:         5;
+	column-gap:           0px;  
+
+}
+
+#picture_grid img{
+	width: 100% !important;
+	height: auto !important;
+	margin: 0.7em;
+	border: 2px solid #fcfcfc;
+
+}

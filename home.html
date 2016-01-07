@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Pictogrid</title>
+</head>
+<body>
+	<h1>My Pictures</h1>
+	<div id = "picture_grid">
+	</div>
+
+
+<script type="text/javascript">
+function jsonFlickrApi(rsp){
+	window.rsp = rsp;
+	var s = "total number is: " + rsp.photos.photo.length;
+	console.log(s);
+	var numberOfPhotos = rsp.photos.photo.length;
+
+	for (var i=0; i < numberOfPhotos; i++){
+		var singlePhoto = rsp.photos.photo[i]
+		var photoId = singlePhoto.id;
+		var photoFarmId = singlePhoto.farm;
+		var photoServerId = singlePhoto.server;
+		var photoSecret = singlePhoto.secret;
+	
+
+		var newUrl = "https://farm" + photoFarmId + ".staticflickr.com/" + photoServerId + "/" + photoId + "_" + photoSecret + ".jpg";
+		var img = document.createElement("img");
+		//img.style.width = "0.02 em"
+
+		document.getElementById('picture_grid').appendChild(img);
+		img.src = newUrl;
+
+	}
+}
+</script>
+
+<script type="text/javascript" language="javascript" src="https://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&tags=pancakes&tag_mode=all&api_key=576a1c6c62cfcf95bc8a147ad2c97836"></script>
+</body>
+</html>
