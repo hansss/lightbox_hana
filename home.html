@@ -2,10 +2,11 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>Pic O' Pancake</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab|Raleway:200' rel='stylesheet' type='text/css'>
+	<title>Pic O' Pancakes</title>
 </head>
 <body>
-	<h1>Pic O' Pancake</h1>
+	<h1>Pic O' Pancakes</h1>
 	<div id = "picture_grid">
 		<ul id="picture_list">
 
@@ -18,8 +19,8 @@
 <script type="text/javascript">
 function jsonFlickrApi(rsp){
 	window.rsp = rsp;
-	var s = "total number is: " + rsp.photos.photo.length;
-	console.log(s);
+
+	// Creating the elements for each photo
 	var numberOfPhotos = rsp.photos.photo.length;
 
 	for (var i=0; i < numberOfPhotos; i++){
@@ -33,22 +34,28 @@ function jsonFlickrApi(rsp){
 		var newUrl = "https://farm" + photoFarmId + ".staticflickr.com/" + photoServerId + "/" + photoId + "_" + photoSecret + ".jpg";
 
 		var img = document.createElement("img");
+		img.id = "photo" + i;
+		img.class = "primaryImage";
 		img.src = newUrl;
 		img.alt = photoTitle;
 
-		var list = document.getElementById('picture_list')
+		// var infoDiv = document.createElement("div");
+		// infoDiv.id = "photoHover";
+		// infoDiv.class = "infoDiv";
+		// infoDiv.innerHTML = photoTitle;
+	
+
+		var list = document.getElementById('picture_list');
 		var entry = document.createElement('li');
-		
-		//var a = document.createElement('a');
-		//a.href = newUrl;
-		//a.alt = photoTitle;
-		//entry.appendChild(a);
 
-		entry.appendChild(img)
-
+		entry.appendChild(img);
+		// entry.appendChild(infoDiv);
 		list.appendChild(entry);
-		//console.log(a.alt);
 	}
+
+	//funnction to display the lightbox view of specific image
+
+	//event listener on all images for said function
 }
 </script>
 

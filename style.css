@@ -5,6 +5,10 @@ html{
 
 h1 {
 	text-align: center;
+	font-family: 'Roboto Slab', helvetica, serif;
+	font-weight: 100;
+	color: black;
+	font-size: 3em;
 }
 
 ul{
@@ -29,6 +33,14 @@ ul{
 	margin: 0.7em;
 	border: 2px solid #fcfcfc;
 
+}
+
+.infoDiv{
+	display: none;
+}
+
+.primaryImage.hover ~ .infoDiv{
+	display: block;
 }
 
 .spotlight_content{
@@ -58,4 +70,20 @@ ul{
 	-moz-opacity: 0.8;
 	opacity: .80;
 	filter: alpha(opacity=80);
+}
+
+img:hover {
+	cursor: pointer;
+	opacity: 0.3;
+}
+
+img.grayscale {
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+  filter: gray; /* IE6-9 */
+  -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+}
+
+img.grayscale:hover {
+  filter: none;
+  -webkit-filter: grayscale(0%);
 }
