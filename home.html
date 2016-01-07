@@ -8,18 +8,6 @@
 <body>
 	<h1>Pic O' Pancakes</h1>
 
-	<div>
-		<h1>Tester</h1>
-		<img id="tester" src="https://farm6.staticflickr.com/5698/23749519015_230cfc6ebe.jpg" >
-
-		<div id="light" class="white_content">
-			<h2>Lightbox Content</h2>
-			<a id="tester_close">Close</a>
-		</div>
-
-		<div id="fade" class="black_overlay"></div>
-	</div>
-
 	<!-- Picture Grid -->
 	<div id = "picture_grid">
 		<ul id="picture_list">
@@ -28,20 +16,13 @@
 	</div>
 
 	<!-- Lightbox Display -->
-	<div id = "lightbox" class = "lightbox">
-		<table class = "lightbox_table">
-			<tr>
-				<td id = "lightbox_table_cell" class="lightbox_table_cell">
-					<div id="lightbox_content">HIIIII IM HERE</div>
-				</td>
-			</tr>
-
-		</table>
+	<div id="light" class="white_content">
+		<a id="lightbox_close">Close</a>
+		<h2>Lightbox Content</h2>
 	</div>
 
+	<div id="fade" class="black_overlay"></div>
 
-	<div id="spotlight" class="spotlight_content"></div>
-	<div id="back" class="shadow"></div>
 
 <script type="text/javascript">
 function jsonFlickrApi(rsp){
@@ -65,7 +46,7 @@ function jsonFlickrApi(rsp){
 		img.className = "primaryImage";
 		img.src = newUrl;
 		img.alt = photoTitle;
-		img.onclick = function() {displayLightbox(img)};
+		//img.onclick = function() {displayLightbox(img)};
 
 		var list = document.getElementById('picture_list');
 		var entry = document.createElement('li');
@@ -75,7 +56,7 @@ function jsonFlickrApi(rsp){
 		list.appendChild(entry);
 	}
 
-	function testerDL(){
+	function displayLightBox(){
 		console.log("got to tester");
 		var light = document.getElementById('light');
 		light.style.display = 'block';
@@ -83,7 +64,7 @@ function jsonFlickrApi(rsp){
 		fade.style.display = 'block';
 	}
 
-	function testerCloseFunc(){
+	function closeLightBox(){
 		console.log("Close func!");
 		document.getElementById('light').style.display = 'none';
 		document.getElementById('fade').style.display= 'none';
@@ -91,27 +72,25 @@ function jsonFlickrApi(rsp){
 	}
 
 	//function to display the lightbox view of specific image
-	function displayLightbox (img){
-		console.log("clicked!" + img.src + " " + img.alt);
-		var lightbox = document.getElementById('lightbox')
-		lightbox.style.display = 'inline';
-	}
+	// function displayLightbox (img){
+	// 	console.log("clicked!" + img.src + " " + img.alt);
+	// 	var lightbox = document.getElementById('lightbox')
+	// 	lightbox.style.display = 'inline';
+	// }
 
 
 	//event listener on all images for said function
 	var allPrimaryImages = document.getElementsByClassName("primaryImage");
+	for (var i = 0; i < allPrimaryImages.length; i++){
+		//console.log(allPrimaryImages[i]);
+		allPrimaryImages[i].addEventListener("click", function(){displayLightBox()}, false);
+	}
 
-	var testerEL = document.getElementById('tester');
-	testerEL.addEventListener("click", function(){testerDL()})
+	//var testerEL = document.getElementById('tester');
+	//testerEL.addEventListener("click", function(){displayLightbox()})
 
-	var testerClose = document.getElementById('tester_close');
-	testerClose.addEventListener("click", function(){testerCLoseFunc()});
-	//console.log(allPrimaryImages)
-
-	// for (var i = 0; i < allPrimaryImages.length; i++){
-	// 	//console.log(allPrimaryImages[i]);
-	// 	allPrimaryImages[i].addEventListener("click", function(){displayLightbox()}, false);
-	// }
+	var lightboxClose = document.getElementById('lightbox_close');
+	lightboxClose.addEventListener("click", function(){closeLightBox()});
 }
 </script>
 

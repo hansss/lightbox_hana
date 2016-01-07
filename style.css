@@ -35,6 +35,10 @@ ul{
 
 }
 
+.primaryImage{
+	border-radius: 5px;
+}
+
 .infoDiv{
 	display: none;
 }
@@ -66,8 +70,9 @@ ul{
 	width: 50%;
 	height: 50%;
 	padding: 16px;
-	border: 16px solid orange;
-	background-color: gray;
+	border: 5px solid white;
+	border-radius: 8px;
+	background-color: black;
 	z-index: 1002;
 	overflow: auto;
 }
@@ -93,4 +98,13 @@ img:hover {
 	width: 300px;
 	background-color: white;
 	border:5px solid black;
+}
+
+#lightbox_close{
+	float:right;
+	color: white;
+}
+
+#lightbox_close:hover{
+	cursor:pointer;
 }
