@@ -1,11 +1,11 @@
 html{
 	margin-right: 1em;
 	margin-left: 1em;
+	font-family: 'Roboto Slab', helvetica, sans-serif;
 }
 
 h1 {
 	text-align: center;
-	font-family: 'Roboto Slab', helvetica, serif;
 	font-weight: 100;
 	color: black;
 	font-size: 3em;
@@ -70,9 +70,8 @@ ul{
 	width: 50%;
 	height: 50%;
 	padding: 16px;
-	border: 5px solid white;
-	border-radius: 3px;
-	background-color: black;
+	border: 2px solid gray;
+	background-color: white;
 	z-index: 1002;
 	overflow: auto;
 }
@@ -83,29 +82,12 @@ img:hover {
 	opacity: 0.3;
 }
 
-/*#lightbox {
-	display: none;
-	width: 100%;
-	height: 100%;
-}
-
-#lightbox_table_cell{
-	align: center;
-	vertical-align: middle;
-}
-
-#lightbox_content{
-	width: 300px;
-	background-color: white;
-	border:5px solid black;
-}
-*/
 .lightbox_content{
 	display: inline-block;
 }
 
 .lightbox_text{
-	color: white;
+	color: black;
 }
 
 #lightbox_close{
@@ -115,3 +97,33 @@ img:hover {
 .lightbox_text:hover{
 	cursor:pointer;
 }
+
+.stop_hover:hover{
+	opacity:1;
+}
+
+.light_in{
+	width: 100%;
+}
+
+#header{
+	width: 100%;
+	text-align: center;
+}
+
+#title{
+	font-weight: bold;
+	/*left: 50%;
+	right: 50%;*/
+}
+#lightbox_prev{
+	font-size: 10px;
+	margin-right: 50px;
+}
+
+#lightbox_next{
+	font-size: 10px;
+	margin-left: 50px;
+}
+
+

@@ -33,9 +33,11 @@ function jsonFlickrApi(rsp){
 		container.innerHTML = "";
 		console.log(img);
 		container.appendChild(img);
+		document.getElementById('title').innerHTML = img.alt;
 	}
 
 	function setNextAndPrev(currentID){
+		console.log("Slice: " + currentID);
 		var numberID = parseInt(currentID.slice(5));
 		document.getElementById("lightbox_next").setAttribute("img_display_id","photo" + (numberID+1).toString());
 		document.getElementById("lightbox_prev").setAttribute("img_display_id","photo" + (numberID-1).toString());
@@ -44,28 +46,27 @@ function jsonFlickrApi(rsp){
 	function displayLightBox(currentID){
 		setNextAndPrev(currentID);
 		var displayImg = document.getElementById(currentID);
-		console.log("displayImg: " + displayImg);
 		replaceContainer(displayImg);
 
 		var light = document.getElementById('light');
-		
-		console.log(light.style);
 		light.style.height = displayImg.height + "px";
-		light.style.width = displayImg.width + "px";
+		light.style.width = displayImg.width + 150 + "px";
 		light.style.display = 'block';
+
+		document.getElementById('lightbox_prev').style.height = displayImg.height + "px";
+
 		var fade = document.getElementById('fade');
 		fade.style.display = 'block';
 	}
 
 	function closeLightBox(){
-		console.log("Close func!");
 		document.getElementById('light').style.display = 'none';
 		document.getElementById('fade').style.display= 'none';
 	}
 
 	function nextLightBox(){
 		var e = window.event.srcElement
-		console.log("next E: " + e);
+		console.log("next E: " + window.event);
 		var newID = e.getAttribute("img_display_id");
 		displayLightBox(newID);
 	}
@@ -97,6 +98,25 @@ function jsonFlickrApi(rsp){
 	lightboxPrev.addEventListener("click", function(){prevLightBox()});
 
 
+	document.onkeydown = checkKey;
+
+	function checkKey(e) {
+
+	    e = e || window.event;
+	    //left arrow
+	    if (e.keyCode == '37') {
+	        prevLightBox();
+	    }
+	    //right arrow
+	    else if (e.keyCode == '39') {
+	    	nextLightBox();
+	    }
+	    //esc key
+	    else if (e.keyCode == '27'){
+	    	closeLightBox();
+	    }
+
+}
 
 }
 
