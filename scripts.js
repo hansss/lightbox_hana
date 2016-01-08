@@ -36,29 +36,15 @@ function jsonFlickrApi(rsp){
 
 	function setNextAndPrev(currentID){
 		var numberID = parseInt(currentID.slice(5));
-		//console.log((numberId+1).toString());
-
 		document.getElementById("lightbox_next").setAttribute("img_display_id","photo" + (numberID+1).toString());
 		document.getElementById("lightbox_prev").setAttribute("img_display_id","photo" + (numberID-1).toString());
 	}
 
-	function displayLightBox(){
-		var currentID = window.event.srcElement.id;
-		// var numberId = parseInt(eId.slice(5));
-		// console.log((numberId+1).toString());
+	function displayLightBox(currentID){
+		console.log("TESTER" + currentID);
 
 		setNextAndPrev(currentID);
-
-		// document.getElementById("lightbox_next").setAttribute("img_display_id","photo" + (numberId+1).toString());
-		// document.getElementById("lightbox_prev").setAttribute("img_display_id","photo" + (numberId-1).toString());
-
 		var displayImg = document.getElementById(currentID);
-		//displayImg.style = ""
-
-		// var container = document.getElementById('container');
-		// container.innerHTML = "";
-		// container.appendChild(displayImg);
-
 		replaceContainer(displayImg);
 
 		var light = document.getElementById('light');
@@ -77,28 +63,20 @@ function jsonFlickrApi(rsp){
 
 	function nextLightBox(){
 		var e = window.event.srcElement
-		var x = e.getAttribute("img_display_id");
-		var img = document.getElementById(x);
-		console.log("next!");
-		console.log(img);
-		replaceContainer(img);
-		setNextAndPrev(x);
+		var newID = e.getAttribute("img_display_id");
+		displayLightBox(newID);
 	}
 
 	function prevLightBox(){
 		var e = window.event.srcElement
-		var x = e.getAttribute("img_display_id");
-		var img = document.getElementById(x);
-		console.log("prev!");
-		console.log(img);
-		replaceContainer(img);
-		setNextAndPrev(x);
+		var newID = e.getAttribute("img_display_id");
+		displayLightBox(newID);
 	}
 
 	//event listener on all images for showing lightbox on click of img
 	var allPrimaryImages = document.getElementsByClassName("primaryImage");
 	for (var i = 0; i < allPrimaryImages.length; i++){
-		allPrimaryImages[i].addEventListener("click", function(){displayLightBox()}, false);
+		allPrimaryImages[i].addEventListener("click", function(){displayLightBox(window.event.srcElement.id)}, false);
 	}
 	
 	//event listener for the close button on the lightbox
