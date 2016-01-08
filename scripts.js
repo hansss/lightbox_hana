@@ -31,6 +31,7 @@ function jsonFlickrApi(rsp){
 	function replaceContainer(img){
 		var container = document.getElementById('container');
 		container.innerHTML = "";
+		console.log(img);
 		container.appendChild(img);
 	}
 
@@ -41,15 +42,16 @@ function jsonFlickrApi(rsp){
 	}
 
 	function displayLightBox(currentID){
-		console.log("TESTER" + currentID);
-
 		setNextAndPrev(currentID);
 		var displayImg = document.getElementById(currentID);
+		console.log("displayImg: " + displayImg);
 		replaceContainer(displayImg);
 
 		var light = document.getElementById('light');
-		light.style.height = displayImg.style.height;
-		light.style.width = displayImg.style.width;
+		
+		console.log(light.style);
+		light.style.height = displayImg.height + "px";
+		light.style.width = displayImg.width + "px";
 		light.style.display = 'block';
 		var fade = document.getElementById('fade');
 		fade.style.display = 'block';
@@ -63,12 +65,14 @@ function jsonFlickrApi(rsp){
 
 	function nextLightBox(){
 		var e = window.event.srcElement
+		console.log("next E: " + e);
 		var newID = e.getAttribute("img_display_id");
 		displayLightBox(newID);
 	}
 
 	function prevLightBox(){
 		var e = window.event.srcElement
+		console.log("prev E: " + e);
 		var newID = e.getAttribute("img_display_id");
 		displayLightBox(newID);
 	}
@@ -79,6 +83,7 @@ function jsonFlickrApi(rsp){
 		allPrimaryImages[i].addEventListener("click", function(){displayLightBox(window.event.srcElement.id)}, false);
 	}
 	
+	///// Event Listener Set Up ////
 	//event listener for the close button on the lightbox
 	var lightboxClose = document.getElementById('lightbox_close');
 	lightboxClose.addEventListener("click", function(){closeLightBox()});
