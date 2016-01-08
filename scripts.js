@@ -44,12 +44,14 @@ function jsonFlickrApi(rsp){
 	}
 
 	function displayLightBox(currentID){
+		console.log("B");
 		setNextAndPrev(currentID);
 		var displayImg = document.getElementById(currentID);
+		console.log("DI: " + displayImg);
 		replaceContainer(displayImg);
 
 		var light = document.getElementById('light');
-		light.style.height = displayImg.height + "px";
+		light.style.height = displayImg.height + 20 + "px";
 		light.style.width = displayImg.width + 150 + "px";
 		light.style.display = 'block';
 
@@ -68,6 +70,7 @@ function jsonFlickrApi(rsp){
 		var e = window.event.srcElement
 		console.log("next E: " + window.event);
 		var newID = e.getAttribute("img_display_id");
+		console.log("A");
 		displayLightBox(newID);
 	}
 
@@ -75,6 +78,7 @@ function jsonFlickrApi(rsp){
 		var e = window.event.srcElement
 		console.log("prev E: " + e);
 		var newID = e.getAttribute("img_display_id");
+		console.log("C");
 		displayLightBox(newID);
 	}
 
