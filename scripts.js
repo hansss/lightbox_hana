@@ -31,13 +31,11 @@ function jsonFlickrApi(rsp){
 	function replaceContainer(img){
 		var container = document.getElementById('container');
 		container.innerHTML = "";
-		console.log(img);
 		container.appendChild(img);
 		document.getElementById('title').innerHTML = img.alt;
 	}
 
 	function setNextAndPrev(currentID){
-		console.log("Slice: " + currentID);
 		var numberID = parseInt(currentID.slice(5));
 		document.getElementById("lightbox_next").setAttribute("img_display_id","photo" + (numberID+1).toString());
 		document.getElementById("lightbox_prev").setAttribute("img_display_id","photo" + (numberID-1).toString());
@@ -46,6 +44,7 @@ function jsonFlickrApi(rsp){
 	function displayLightBox(currentID){
 		console.log("B: "+ currentID);
 		setNextAndPrev(currentID);
+		console.log(currentID);
 		var displayImg = document.getElementById(currentID);
 		console.log("DI: " + displayImg);
 		replaceContainer(displayImg);
@@ -67,11 +66,7 @@ function jsonFlickrApi(rsp){
 	}
 
 	function nextLightBox(){
-		// var e = window.event.srcElement
-		// console.log("next E: " + window.event);
 		var e = document.getElementById('lightbox_next');
-		console.log("HIII");
-		console.log(e);
 		var newID = e.getAttribute("img_display_id");
 		displayLightBox(newID);
 	}
@@ -79,8 +74,6 @@ function jsonFlickrApi(rsp){
 	function prevLightBox(){
 		var e = document.getElementById('lightbox_prev');
 		var newID = e.getAttribute("img_display_id");
-		console.log("PREV");
-		console.log("E: "+e);
 		displayLightBox(newID);
 	}
 
