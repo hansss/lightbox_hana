@@ -42,11 +42,9 @@ function jsonFlickrApi(rsp){
 	}
 
 	function displayLightBox(currentID){
-		console.log("B: "+ currentID);
 		setNextAndPrev(currentID);
-		console.log(currentID);
+		//source of next-prev bug mentioned in README
 		var displayImg = document.getElementById(currentID);
-		console.log("DI: " + displayImg);
 		replaceContainer(displayImg);
 
 		var light = document.getElementById('light');
@@ -115,8 +113,7 @@ function jsonFlickrApi(rsp){
 	    	closeLightBox();
 	    }
 
-}
-
+	}
 }
 
 
