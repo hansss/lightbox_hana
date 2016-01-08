@@ -28,21 +28,38 @@ function jsonFlickrApi(rsp){
 		list.appendChild(entry);
 	}
 
-	function displayLightBox(){
-		var eId = window.event.srcElement.id;
-		var numberId = parseInt(eId.slice(5));
-		console.log((numberId+1).toString());
-
-		document.getElementById("lightbox_next").setAttribute("img_display_id","photo" + (numberId+1).toString());
-		document.getElementById("lightbox_prev").setAttribute("img_display_id","photo" + (numberId-1).toString());
-
-		var displayImg = document.getElementById(eId);
-		displayImg.style = ""
-
+	function replaceContainer(img){
 		var container = document.getElementById('container');
 		container.innerHTML = "";
-		container.appendChild(displayImg);
+		container.appendChild(img);
+	}
 
+	function setNextAndPrev(currentID){
+		var numberID = parseInt(currentID.slice(5));
+		//console.log((numberId+1).toString());
+
+		document.getElementById("lightbox_next").setAttribute("img_display_id","photo" + (numberID+1).toString());
+		document.getElementById("lightbox_prev").setAttribute("img_display_id","photo" + (numberID-1).toString());
+	}
+
+	function displayLightBox(){
+		var currentID = window.event.srcElement.id;
+		// var numberId = parseInt(eId.slice(5));
+		// console.log((numberId+1).toString());
+
+		setNextAndPrev(currentID);
+
+		// document.getElementById("lightbox_next").setAttribute("img_display_id","photo" + (numberId+1).toString());
+		// document.getElementById("lightbox_prev").setAttribute("img_display_id","photo" + (numberId-1).toString());
+
+		var displayImg = document.getElementById(currentID);
+		//displayImg.style = ""
+
+		// var container = document.getElementById('container');
+		// container.innerHTML = "";
+		// container.appendChild(displayImg);
+
+		replaceContainer(displayImg);
 
 		var light = document.getElementById('light');
 		light.style.height = displayImg.style.height;
@@ -64,6 +81,8 @@ function jsonFlickrApi(rsp){
 		var img = document.getElementById(x);
 		console.log("next!");
 		console.log(img);
+		replaceContainer(img);
+		setNextAndPrev(x);
 	}
 
 	function prevLightBox(){
@@ -72,6 +91,8 @@ function jsonFlickrApi(rsp){
 		var img = document.getElementById(x);
 		console.log("prev!");
 		console.log(img);
+		replaceContainer(img);
+		setNextAndPrev(x);
 	}
 
 	//event listener on all images for showing lightbox on click of img
