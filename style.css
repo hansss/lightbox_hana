@@ -71,7 +71,7 @@ ul{
 	height: 50%;
 	padding: 16px;
 	border: 5px solid white;
-	border-radius: 8px;
+	border-radius: 3px;
 	background-color: black;
 	z-index: 1002;
 	overflow: auto;
@@ -83,7 +83,7 @@ img:hover {
 	opacity: 0.3;
 }
 
-#lightbox {
+/*#lightbox {
 	display: none;
 	width: 100%;
 	height: 100%;
@@ -99,12 +99,15 @@ img:hover {
 	background-color: white;
 	border:5px solid black;
 }
-
-#lightbox_close{
-	float:right;
+*/
+.lightbox_text{
 	color: white;
 }
 
-#lightbox_close:hover{
+#lightbox_close{
+	float:right;
+}
+
+.lightbox_text:hover{
 	cursor:pointer;
 }

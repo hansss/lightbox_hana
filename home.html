@@ -17,82 +17,16 @@
 
 	<!-- Lightbox Display -->
 	<div id="light" class="white_content">
-		<a id="lightbox_close">Close</a>
+		<a id="lightbox_close" class="lightbox_text">Close</a>
+		<a id="lightbox_next" class="lightbox_text">Next</a>
+		<a id="lightbox_prev" class="lightbox_text">Prev</a>
 		<h2>Lightbox Content</h2>
 	</div>
 
 	<div id="fade" class="black_overlay"></div>
 
 
-<script type="text/javascript">
-function jsonFlickrApi(rsp){
-	window.rsp = rsp;
-
-	// Creating the elements for each photo
-	var numberOfPhotos = rsp.photos.photo.length;
-
-	for (var i=0; i < numberOfPhotos; i++){
-		var singlePhoto = rsp.photos.photo[i]
-		var photoId = singlePhoto.id;
-		var photoFarmId = singlePhoto.farm;
-		var photoServerId = singlePhoto.server;
-		var photoSecret = singlePhoto.secret;
-		var photoTitle = singlePhoto.title;
-
-		var newUrl = "https://farm" + photoFarmId + ".staticflickr.com/" + photoServerId + "/" + photoId + "_" + photoSecret + ".jpg";
-
-		var img = document.createElement("img");
-		img.id = "photo" + i;
-		img.className = "primaryImage";
-		img.src = newUrl;
-		img.alt = photoTitle;
-		//img.onclick = function() {displayLightbox(img)};
-
-		var list = document.getElementById('picture_list');
-		var entry = document.createElement('li');
-
-		entry.appendChild(img);
-		// entry.appendChild(infoDiv);
-		list.appendChild(entry);
-	}
-
-	function displayLightBox(){
-		console.log("got to tester");
-		var light = document.getElementById('light');
-		light.style.display = 'block';
-		var fade = document.getElementById('fade');
-		fade.style.display = 'block';
-	}
-
-	function closeLightBox(){
-		console.log("Close func!");
-		document.getElementById('light').style.display = 'none';
-		document.getElementById('fade').style.display= 'none';
-
-	}
-
-	//function to display the lightbox view of specific image
-	// function displayLightbox (img){
-	// 	console.log("clicked!" + img.src + " " + img.alt);
-	// 	var lightbox = document.getElementById('lightbox')
-	// 	lightbox.style.display = 'inline';
-	// }
-
-
-	//event listener on all images for said function
-	var allPrimaryImages = document.getElementsByClassName("primaryImage");
-	for (var i = 0; i < allPrimaryImages.length; i++){
-		//console.log(allPrimaryImages[i]);
-		allPrimaryImages[i].addEventListener("click", function(){displayLightBox()}, false);
-	}
-
-	//var testerEL = document.getElementById('tester');
-	//testerEL.addEventListener("click", function(){displayLightbox()})
-
-	var lightboxClose = document.getElementById('lightbox_close');
-	lightboxClose.addEventListener("click", function(){closeLightBox()});
-}
-</script>
+<script type="text/javascript" src="scripts.js"></script>
 
 <script type="text/javascript" language="javascript" src="https://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&tags=pancakes&tag_mode=all&api_key=576a1c6c62cfcf95bc8a147ad2c97836"></script>
 </body>
