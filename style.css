@@ -100,6 +100,10 @@ img:hover {
 	border:5px solid black;
 }
 */
+.lightbox_content{
+	display: inline-block;
+}
+
 .lightbox_text{
 	color: white;
 }

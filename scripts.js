@@ -20,22 +20,33 @@ function jsonFlickrApi(rsp){
 		img.className = "primaryImage";
 		img.src = newUrl;
 		img.alt = photoTitle;
-		//img.onclick = function() {displayLightbox(img)};
 
 		var list = document.getElementById('picture_list');
 		var entry = document.createElement('li');
 
 		entry.appendChild(img);
-		// entry.appendChild(infoDiv);
 		list.appendChild(entry);
 	}
 
 	function displayLightBox(){
-		console.log("got to tester");
-		console.log(window.event.srcElement.src);
-		console.log(window.event.srcElement);
-		console.log(window.event.srcElement.alt);
+		var eId = window.event.srcElement.id;
+		var numberId = parseInt(eId.slice(5));
+		console.log((numberId+1).toString());
+
+		document.getElementById("lightbox_next").setAttribute("img_display_id","photo" + (numberId+1).toString());
+		document.getElementById("lightbox_prev").setAttribute("img_display_id","photo" + (numberId-1).toString());
+
+		var displayImg = document.getElementById(eId);
+		displayImg.style = ""
+
+		var container = document.getElementById('container');
+		container.innerHTML = "";
+		container.appendChild(displayImg);
+
+
 		var light = document.getElementById('light');
+		light.style.height = displayImg.style.height;
+		light.style.width = displayImg.style.width;
 		light.style.display = 'block';
 		var fade = document.getElementById('fade');
 		fade.style.display = 'block';
@@ -45,15 +56,22 @@ function jsonFlickrApi(rsp){
 		console.log("Close func!");
 		document.getElementById('light').style.display = 'none';
 		document.getElementById('fade').style.display= 'none';
-
 	}
 
 	function nextLightBox(){
+		var e = window.event.srcElement
+		var x = e.getAttribute("img_display_id");
+		var img = document.getElementById(x);
 		console.log("next!");
+		console.log(img);
 	}
 
 	function prevLightBox(){
+		var e = window.event.srcElement
+		var x = e.getAttribute("img_display_id");
+		var img = document.getElementById(x);
 		console.log("prev!");
+		console.log(img);
 	}
 
 	//event listener on all images for showing lightbox on click of img
